@@ -1,0 +1,11 @@
+# Install Git + GitHub CLI if they are not installed
+winget install --id Git.Git -e
+winget install --id GitHub.cli -e
+
+# After extracting the ZIP and reopening PowerShell:
+gh auth login
+Set-ExecutionPolicy -Scope Process Bypass
+.\PUBLISH_TO_GITHUB.ps1
+
+# After adding the GitHub Pages custom domain and DNS records:
+.\CHECK_DNS.ps1

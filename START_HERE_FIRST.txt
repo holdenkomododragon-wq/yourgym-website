@@ -1,0 +1,43 @@
+YOURGYM.US — QUICK START (WINDOWS)
+=================================
+
+This archive is intentionally FLAT: after extracting it, PUBLISH_TO_GITHUB.ps1
+is in the folder you extracted into. Do not look for a second YourGym_US_Website
+subfolder.
+
+1. Extract this ZIP into:
+   %USERPROFILE%\Downloads\YourGym_Site_1_8_25_9
+
+2. Open PowerShell and run:
+   cd "$HOME\Downloads\YourGym_Site_1_8_25_9"
+   Get-ChildItem
+   gh auth status
+   Set-ExecutionPolicy -Scope Process Bypass
+   .\PUBLISH_TO_GITHUB.ps1
+
+3. The script publishes a PUBLIC GitHub repository named yourgym-website.
+   Public is required for free GitHub Pages on GitHub Free. The EXE is public
+   to anyone who can visit your website.
+
+4. In the GitHub Pages settings opened by the script, choose Deploy from a
+   branch, branch main, folder /(root), and set custom domain to yourgym.us.
+
+5. In Porkbun > Domain Management > yourgym.us > DNS, add A records for @:
+   185.199.108.153
+   185.199.109.153
+   185.199.110.153
+   185.199.111.153
+   Also add CNAME: host www -> YOUR-GITHUB-USERNAME.github.io
+   Replace the username with your GitHub username. Do not include the repo name.
+
+Do not delete existing MX or TXT records and do not change nameservers. Remove
+only conflicting old website records at @ or www if there are any.
+
+6. Check DNS from this folder with:
+   .\CHECK_DNS.ps1
+
+When GitHub Pages verifies the domain, enable Enforce HTTPS. DNS propagation can
+take up to 24 hours.
+
+The site is static only. Supabase continues to provide app authentication/data.
+The bundled EXE is YourGym 1.8.25.9 for Windows x64.
